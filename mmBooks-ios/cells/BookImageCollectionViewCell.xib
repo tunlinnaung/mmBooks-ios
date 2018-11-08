@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookImageCollectionViewCell" id="gTV-IL-0wX" customClass="BookImageCollectionViewCell" customModule="mmBooks_ios" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="114" height="160"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="114" height="160"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vlo-Wd-rvM">
+                        <rect key="frame" x="0.0" y="0.0" width="114" height="160"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popular_one" translatesAutoresizingMaskIntoConstraints="NO" id="ZpO-jS-noY">
+                                <rect key="frame" x="0.0" y="0.0" width="114" height="160"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZpO-jS-noY" firstAttribute="leading" secondItem="Vlo-Wd-rvM" secondAttribute="leading" id="G0w-Fe-tbL"/>
+                            <constraint firstItem="ZpO-jS-noY" firstAttribute="top" secondItem="Vlo-Wd-rvM" secondAttribute="top" id="LXV-SW-yFw"/>
+                            <constraint firstAttribute="trailing" secondItem="ZpO-jS-noY" secondAttribute="trailing" id="nuz-xC-dGk"/>
+                            <constraint firstAttribute="bottom" secondItem="ZpO-jS-noY" secondAttribute="bottom" id="oR7-9m-0Pf"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Vlo-Wd-rvM" secondAttribute="trailing" id="d6H-1T-30o"/>
+                <constraint firstItem="Vlo-Wd-rvM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dXt-bJ-7Oh"/>
+                <constraint firstAttribute="bottom" secondItem="Vlo-Wd-rvM" secondAttribute="bottom" id="rxI-4k-d9o"/>
+                <constraint firstItem="Vlo-Wd-rvM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="y8J-gx-Jff"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="114" height="173"/>
+            <connections>
+                <outlet property="ivBookImage" destination="ZpO-jS-noY" id="czp-Jh-aHG"/>
+            </connections>
+            <point key="canvasLocation" x="104" y="103.89805097451276"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="popular_one" width="200" height="240"/>
+    </resources>
+</document>
