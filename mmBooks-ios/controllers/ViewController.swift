@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MyDelegate {
 
     @IBOutlet weak var mainCollectionView: UICollectionView!
     
     var bookInfoList: [Book] = []
+    var ads: Advertisement = DummyData.createAdvertisement()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,12 @@ class ViewController: UIViewController {
     
     func createDummyBookInfo() {
         bookInfoList = DummyData.createBookInfo()
+    }
+    
+    func onTapImage(index: Int) {
+        let myVC = storyboard?.instantiateViewController(withIdentifier: "BookDetailsViewController") as! BookDetailsViewController
+        myVC.book = bookInfoList[index]
+        navigationController?.pushViewController(myVC, animated: true)
     }
 
 }
@@ -57,17 +64,24 @@ extension ViewController : UICollectionViewDataSource {
             return cell
         } else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopularBooksCollectionViewCell", for: indexPath) as! PopularBooksCollectionViewCell
+            cell.delegate = self
+            cell.btnMorePopularBooks.addTarget(self, action: #selector(moreButtonClick), for: .touchUpInside)
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookInfoCollectionViewCell", for: indexPath) as! BookInfoCollectionViewCell
             
             let bookInfo = bookInfoList[indexPath.row]
-            cell.ivBookInfo.image = UIImage(named: bookInfo.coverPhoto!)
+            cell.ivBookInfo.image = UIImage(named: bookInfo.coverPhoto)
             cell.lblBookInfoTitle.text = bookInfo.title
             cell.lblBookInfoReleaseDate.text = bookInfo.releaseDate
             
             return cell
         }
+    }
+    
+    @objc func moreButtonClick(_ sender: UIButton) {
+        let myVC = storyboard?.instantiateViewController(withIdentifier: "BookListViewController") as! BookListViewController
+        navigationController?.pushViewController(myVC, animated: true)
     }
     
 }
@@ -81,6 +95,18 @@ extension ViewController : UICollectionViewDelegate, UICollectionViewDelegateFlo
             return CGSize(width: self.view.frame.width, height: 220)
         } else {
             return CGSize(width: self.view.frame.width, height: 220)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if (indexPath.section == 0) {
+            let myVC = storyboard?.instantiateViewController(withIdentifier: "AdsDetailsViewController") as! AdsDetailsViewController
+            myVC.ads = ads
+            navigationController?.pushViewController(myVC, animated: true)
+        } else {
+            let myVC = storyboard?.instantiateViewController(withIdentifier: "BookDetailsViewController") as! BookDetailsViewController
+            myVC.book = bookInfoList[indexPath.row]
+            navigationController?.pushViewController(myVC, animated: true)
         }
     }
     

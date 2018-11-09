@@ -14,9 +14,11 @@ class PopularBooksCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var btnMorePopularBooks: UIButton!
     
-    var popularBookList: [PopularBook] = []
+    var popularBookList: [Book] = []
     
     @IBOutlet weak var popularBooksCollectionView: UICollectionView!
+    
+    weak var delegate: MyDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,7 +35,7 @@ class PopularBooksCollectionViewCell: UICollectionViewCell {
     }
     
     func createPopularBooks() {
-        self.popularBookList = DummyData.createPopularBooks()
+        self.popularBookList = DummyData.createBookInfo()
     }
 
 }
@@ -48,7 +50,7 @@ extension PopularBooksCollectionViewCell: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookImageCollectionViewCell", for: indexPath) as! BookImageCollectionViewCell
         
         let popularBook = popularBookList[indexPath.row]
-        cell.ivBookImage.image = UIImage(named: popularBook.coverPhoto!)
+        cell.ivBookImage.image = UIImage(named: popularBook.coverPhoto)
         
         return cell
     }
@@ -62,7 +64,7 @@ extension PopularBooksCollectionViewCell: UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Clicked")
+        self.delegate?.onTapImage(index: indexPath.row)
     }
     
 }

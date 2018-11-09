@@ -10,14 +10,18 @@ import Foundation
 
 class Book {
     
-    var title: String? = ""
-    var releaseDate: String? = ""
-    var coverPhoto: String? = ""
+    var title: String
+    var author: String
+    var releaseDate: String
+    var coverPhoto: String
+    var description: String
     
-    init(title: String, releaseDate: String, coverPhoto: String) {
+    init(title: String, author: String, releaseDate: String, coverPhoto: String, description: String) {
         self.title = title
+        self.author = author
         self.releaseDate = releaseDate
         self.coverPhoto = coverPhoto
+        self.description = description
     }
     
 }

@@ -12,9 +12,40 @@ class AdsCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var ivAdsBook: UIImageView!
     
+    var ads: Advertisement? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        createAdvertisement()
+    }
+    
+    func createAdvertisement() {
+        ads = DummyData.createAdvertisement()
     }
 
+}
+
+extension AdsCollectionViewCell: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AdsCollectionViewCell", for: indexPath) as! AdsCollectionViewCell
+        
+        cell.ivAdsBook.image = UIImage(named: ads!.image!)
+        
+        return cell
+    }
+    
+}
+
+extension AdsCollectionViewCell: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
+    
 }
